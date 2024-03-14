@@ -1,8 +1,8 @@
 ﻿namespace Backend.Models
 {
-    public class Dnevnik_kalorija
+    public class Dnevnik_kalorija:Entitet
     {
-        public int? sifra { get; set; }
+        
         public string? Vrsta_aktivnosti { get; set; }
 
         public int? Potroseno_kalorija { get; set; }

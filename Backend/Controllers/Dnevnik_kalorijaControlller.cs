@@ -6,7 +6,7 @@ namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class Dnevnik_kalorijaControlller
+    public class Dnevnik_kalorijaController:ControllerBase
     {
         // Dependency injection
         // Definiraš privatno svojstvo
@@ -14,7 +14,7 @@ namespace Backend.Controllers
 
         // Dependency injection
         // U konstruktoru primir instancu i dodjeliš privatnom svojstvu
-        public Dnevnik_kalorijaControlller(EdunovaContext context)
+        public Dnevnik_kalorijaController(EdunovaContext context)
         {
             _context = context;
         }
@@ -23,7 +23,15 @@ namespace Backend.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return new JsonResult(_context.Dnevnici_kalorija.ToList());
+            try
+            {
+                return new JsonResult(_context.Dnevnici_kalorija.ToList());
+            }
+            catch (Exception ex)
+            {
+                return new JsonResult(ex.ToString());
+            }
+            
         }
 
         [HttpPost]
