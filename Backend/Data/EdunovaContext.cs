@@ -14,5 +14,6 @@ namespace Backend.Data
 
         public DbSet<Dnevnik_kalorija> Dnevnici_kalorija { get; set; }
 
+        public DbSet<Korisnik> Korisnici { get; set; }
     }
 }
