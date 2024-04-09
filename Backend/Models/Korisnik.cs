@@ -9,5 +9,7 @@
 
         public int? Zeljena_tezina { get; set;}
 
+        public virtual ICollection<Dnevnik_kalorija> Dnevnici_kalorija { get; set; }
+
     }
 }
