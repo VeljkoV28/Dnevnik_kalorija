@@ -48,7 +48,7 @@ namespace Backend.Controllers
         {
             var smjerIzBaze = _context.Dnevnici_kalorija.Find(sifra);
             // za sada ručno, kasnije će doći Mapper
-            smjerIzBaze.Vrsta_aktivnosti = Dnevnik_kalorija.Vrsta_aktivnosti;
+            smjerIzBaze.Vrsta_Aktivnosti = Dnevnik_kalorija.Vrsta_Aktivnosti;
             smjerIzBaze.Potroseno_kalorija= Dnevnik_kalorija.Potroseno_kalorija;
             
 
