@@ -7,8 +7,11 @@ import NavBar from './components/NavBar'
 import { Route, Routes } from 'react-router-dom'
 import { RoutesNames } from './constants'
 import Pocetna from './pages/Pocetna'
-import Dnevnici_kalorija from './pages/dnevnici_kalorija/Dnevnici_kalorija'
-import Dnevnici_kalorijaDodaj from './pages/dnevnici_kalorija/Dnevnici_kalorijaiDodaj'
+import Korisnici from './pages/korisnici/Korisnici'
+import KorisniciDodaj from './pages/korisnici/KorisniciDodaj'
+import KorisniciPromjena from "./pages/korisnici/KorisniciPromjena"
+import ErrorModal from './components/ErrorModal';
+import useError from "./hooks/useError"
 
 function App() {
 
@@ -19,8 +22,9 @@ function App() {
       <Routes>
         <Route path={RoutesNames.HOME} element={<Pocetna />} />
 
-        <Route path={RoutesNames.DNEVNIK_KALORIJA_PREGLED} element={<Dnevnici_kalorija />} />
-        <Route path={RoutesNames.DNEVNIK_KALORIJA_NOVI} element={<Dnevnici_kalorijaDodaj />} />
+        <Route path={RoutesNames.KORISNIK_PREGLED} element={<Korisnici />} />
+        <Route path={RoutesNames.KORISNIK_NOVI} element={<KorisniciDodaj />} />
+        <Route path={RoutesNames.KORISNIK_PROMJENA} element={<KorisniciPromjena />} />
         
       </Routes>
     </>

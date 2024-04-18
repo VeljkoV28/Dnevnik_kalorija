@@ -25,12 +25,12 @@ export default function NavBar(){
                     href="http://veljko28-001-site1.ktempurl.com/swagger/index.html"
                     target='_blank'>API</Nav.Link>
                     
-                    <NavDropdown title="Programi" id="collapsible-nav-dropdown">
+                    <NavDropdown title="Dnevnik kalorija" id="collapsible-nav-dropdown">
                     <NavDropdown.Item 
-                    onClick={()=>navigate(RoutesNames.DNEVNIK_KALORIJA_PREGLED)}
-                    >Dnevnici kalorija</NavDropdown.Item>
+                    onClick={()=>navigate(RoutesNames.KORISNIK_PREGLED)}
+                    >Korisnici</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">
-                       Korisnici
+                       Dnevnici kalorija
                     </NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.3">Obroci</NavDropdown.Item>
                 

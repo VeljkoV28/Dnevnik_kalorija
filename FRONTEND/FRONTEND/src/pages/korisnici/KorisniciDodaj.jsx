@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { RoutesNames } from "../../constants";
 
 
-export default function Dnevnici_kalorijaDodaj(){
+export default function KorisniciDodaj(){
 
     function obradiSubmit(e){ // e predstavlja event
         e.preventDefault();
-        alert('Dodajem dnevnik');
+        alert('Dodajem korisnika');
     }
 
     return (
@@ -17,7 +17,7 @@ export default function Dnevnici_kalorijaDodaj(){
 
                 <Row>
                     <Col xs={6} sm={6} md={3} lg={6} xl={1} xxl={2}>
-                        <Link className="btn btn-danger siroko" to={RoutesNames.DNEVNIK_KALORIJA_PREGLED}>
+                        <Link className="btn btn-danger siroko" to={RoutesNames.KORISNIK_PREGLED}>
                             Odustani
                         </Link>
                     </Col>

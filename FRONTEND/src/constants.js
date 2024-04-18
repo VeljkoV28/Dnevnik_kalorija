@@ -1,8 +1,8 @@
 export const RoutesNames = {
     HOME: '/',
 
-    DNEVNIK_KALORIJA_PREGLED: '/dnevnici_kalorija',
-    DNEVNIK_KALORIJA_NOVI: '/dnevnici_kalorija/dodaj',
-    DNEVNIK_KALORIJA_PROMJENI: '/dnevnici_kalorija/:sifra'
+    KORISNIK_PREGLED: '/korisnici',
+    KORISNIK_NOVI: '/korisnici/dodaj',
+    KORISNIK_PROMJENI: '/korisnici/:sifra'
     
 };

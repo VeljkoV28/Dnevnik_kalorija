@@ -1,21 +1,21 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { RoutesNames } from "../../constants";
-import Dnevnik_kalorijaService from "../../services/Dnevnik_kalorijaService";
+import KorisnikService from "../../services/KorisnikService";
 
 
-export default function Dnevnici_kalorijaDodaj(){
+export default function KorisnicDodaj(){
 
     const navigate = useNavigate();
 
-    async function dodaj(dnevnik_kalorija){
-        const odqovor = Dnevnik_kalorijaService.post(dnevnik_kalorija);
+    async function dodaj(korisnik){
+        const odqovor = KorisnikService.post(korisnik);
         if (odqovor.greska){
             console.log((odqovor).poruka);
             alert('Pogledaj konzolu');
             return;
         }
-        navigate(RoutesNames.DNEVNIK_KALORIJA_PREGLED);
+        navigate(RoutesNames.KORISNIK_PREGLED);
 
 
     }
@@ -26,7 +26,7 @@ export default function Dnevnici_kalorijaDodaj(){
 
         const podaci = new FormData(e.targeg);
 
-        const dnevnik_kalorija = {
+        const korisnik = {
         
         potroseno_kalorija: parseFloat(podaci.get('potroseno kalorija')),
         
@@ -34,7 +34,7 @@ export default function Dnevnici_kalorijaDodaj(){
 
         };
         // console.log(smjer);
-        dodaj(dnevnik_kalorija);
+        dodaj(korisnik);
     
 
 
@@ -45,27 +45,35 @@ export default function Dnevnici_kalorijaDodaj(){
 
         <Container>
             <Form onSubmit={obradiSubmit}>
-                <Form.Group controlID="vrsta aktivnosti">
-                    <Form.Label>Vrsta aktivnosti</Form.Label>
-                    <Form.Control type="text" name="Vrsta aktivnosti" required />
+                <Form.Group controlID="Korisnicko ime">
+                    <Form.Label>Korisnicko ime</Form.Label>
+                    <Form.Control type="text" name="Korisnicko ime" required />
 
 
                  <hr />
                 </Form.Group>
-                <Form.Group controlID="trajanje">
-                    <Form.Label>Potroseno kalorija</Form.Label>
-                    <Form.Control type="number" name="potroseno kalorija"  />
+                <Form.Group controlID="Visina">
+                    <Form.Label>Visina</Form.Label>
+                    <Form.Control type="number" name="Visina"  />
 
 
                  <hr />
                 </Form.Group>
-                <Form.Group controlID="korisnik">
-                    <Form.Label>Korisnik</Form.Label>
-                    <Form.Control type="text" name="korisnik" />
+                <Form.Group controlID="Trenutna tezina">
+                    <Form.Label>Trenutna tezina</Form.Label>
+                    <Form.Control type="number" name="Trenutna tezina" />
 
 
                  <hr />
                 </Form.Group>
+                <Form.Group controlID="Zeljena tezina">
+                    <Form.Label>Zeljena tezina</Form.Label>
+                    <Form.Control type="number" name="Zeljena tezina" />
+
+
+                 <hr />
+                </Form.Group>
+                
                 
                 
                
@@ -76,7 +84,7 @@ export default function Dnevnici_kalorijaDodaj(){
 
                 <Row>
                     <Col xs={7} sm={6} md={3} lg={6} xl={1} xxl={4}>
-                        <Link className="btn btn-danger siroko" to={RoutesNames.DNEVNIK_KALORIJA_PREGLED}>
+                        <Link className="btn btn-danger siroko" to={RoutesNames.KORISNIK_PREGLED}>
                             Odustani
                         </Link>
                     </Col>

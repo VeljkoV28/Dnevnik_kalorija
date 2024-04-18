@@ -27,12 +27,12 @@ export default function NavBar(){
                     
                     <NavDropdown title="Dnevnik kalorija" id="collapsible-nav-dropdown">
                     <NavDropdown.Item 
-                    onClick={()=>navigate(RoutesNames.DNEVNIK_KALORIJA_PREGLED)}
-                    >Dnevnik kalorija</NavDropdown.Item>
+                    onClick={()=>navigate(RoutesNames.KORISNIK_PREGLED)}
+                    >Korisnik</NavDropdown.Item>
                     <NavDropdown.Item href="#action/3.2">
-                       Korisnik
+                       Dnevnik kalorija
                     </NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.3">Predavači</NavDropdown.Item>
+                    <NavDropdown.Item href="#action/3.3">Obrok</NavDropdown.Item>
                 
                     
                     
