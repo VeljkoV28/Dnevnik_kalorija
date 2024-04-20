@@ -1,50 +1,41 @@
-import { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
-import KorisnikService from '../../services/KorisnikService';
-import {Button, Table} from 'react-bootstrap'
-import { Link } from 'react-router-dom';
-import {RoutesNames} from '../../constants'
-
+import { useEffect, useState } from "react";
+import { Button, Container, Table } from "react-bootstrap";
+import Service from "../../services/KorisnikService";
+import { IoIosAdd } from "react-icons/io";
+import {  FaEdit, FaTrash} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import {  RoutesNames } from "../../constants";
+import { useNavigate } from "react-router-dom";
+import useError from "../../hooks/useError";
+import moment from "moment/moment";
 
 export default function Korisnici(){
-    const [korisnici, setKorisnici] = useState();
-
+    const [korisnici,setKorisnici] = useState();
+    let navigate = useNavigate(); 
+    const { prikaziError } = useError();
 
     async function dohvatiKorisnike(){
-        await KorisnikService.get()
-        .then((odg)=>{
-            setKorisnici(odg);
-        })
-        .catch((e)=>{
-            console.log(e);
-        });
+        const odgovor = await Service.get('Korisnik');
+        if(!odgovor.ok){
+            prikaziError(odgovor.podaci);
+            return;
+        }
+        setKorisnici(odgovor.podaci);
+    }
+
+    async function obrisi(sifra) {
+        const odgovor = await Service.obrisi('Korisnik',sifra);
+        prikaziError(odgovor.podaci);
+        if (odgovor.ok){
+            dohvatiKorisnike();
+        }
     }
 
     useEffect(()=>{
         dohvatiKorisnike();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
-   
-
-    }
-    async function obrisiAsync(sifra){
-        const odqovor =await KorisnikService._delete(sifra);
-        if (odqovor.greska){
-            console.log((odqovor).poruka);
-            alert('Pogledaj konzolu');
-            return;
-        }
-        dohvatiKorisnike();
-
-
-    }
-    
-    function obrisi(sifra){
-        obrisiAsync(sifra);
-        
-
-
-    }
     
     return(
         <>
@@ -70,7 +61,8 @@ export default function Korisnici(){
                                 <td>{korisnik.zeljena_tezina}</td>
                                 
                                 <td>
-                                    <Button> onClick={()=>obrisi(korisnik.sifra)}
+                                    <Button> 
+                                    onClick={()=>obrisi(korisnik.sifra)}
                                     variant='danger'
                                     Obrisi</Button>
                                 </td>
@@ -82,3 +74,4 @@ export default function Korisnici(){
            </Container>
         </>
     );
+}

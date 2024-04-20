@@ -1,9 +1,9 @@
-import {HttpService} from "./HttpService"
+import {httpService, obrisi} from "./HttpService"
 
 const korisnik = '/Korisnik'
 
 async function get(){
-    return await HttpService.get(korisnik)
+    return await httpService.get(korisnik)
     .then((odgovor)=>{
         //console.table(odgovor.data);
         return odgovor.data;
@@ -14,7 +14,7 @@ async function get(){
     })
 }
 async function post(korisnik){
-    return await HttpService.post(korisnik,smjer)
+    return await httpService.post(korisnik,smjer)
     .then((odgovor)=>{
         //console.table(odgovor.data);
         return {greska: false, poruka: odgovor.data};
@@ -25,7 +25,7 @@ async function post(korisnik){
     })
 }
 async function _delete(sifraKorisnik){
-    return await HttpService.delete(korisnik + '/'+sifraKorisnik)
+    return await httpService.delete(korisnik + '/'+sifraKorisnik)
     .then((odgovor)=>{
         //console.table(odgovor.data);
         return {greska: false, poruka: odgovor.data.poruka};
@@ -39,5 +39,6 @@ async function _delete(sifraKorisnik){
 export default{
     get,
     post,
-    _delete
+    _delete,
+    obrisi
 }
