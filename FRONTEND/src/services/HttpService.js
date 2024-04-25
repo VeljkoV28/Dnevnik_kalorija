@@ -2,9 +2,10 @@ import axios from "axios";
 import { AxiosError } from "axios";
 import { App } from "../constants";
 
+
 export const httpService = axios.create({
 
-    baseURL: 'http://veljko28-001-site1.ktempurl.com/api/v1',
+    baseURL: App.URL + '/api/v1',
     headers: {
         'Content-Type' : 'application/json'
     }
