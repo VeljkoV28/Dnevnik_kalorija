@@ -1,4 +1,4 @@
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button } from "react-bootstrap";
 import PropTypes from 'prop-types';
 
 export default function ErrorModal({ show, onHide, errors }) {

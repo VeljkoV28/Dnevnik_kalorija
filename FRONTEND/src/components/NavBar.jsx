@@ -22,7 +22,7 @@ export default function NavBar(){
                 <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link 
-                    href="http://veljko28-001-site1.ktempurl.com/swagger/index.html"
+                    href={App.URL + '/swagger/index.html'}
                     target='_blank'>API</Nav.Link>
                     
                     <NavDropdown title="Dnevnik kalorija" id="collapsible-nav-dropdown">
@@ -32,6 +32,7 @@ export default function NavBar(){
                     <NavDropdown.Item href="#action/3.2">
                        Dnevnik kalorija
                     </NavDropdown.Item>
+                    <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.3">Obrok</NavDropdown.Item>
                 
                     

@@ -1,44 +1,12 @@
-import {httpService, obrisi} from "./HttpService"
+import {get,obrisi,dodaj,getBySifra,promjeni,dohvatiPorukeAlert} from './HttpService';
 
-const korisnik = '/Korisnik'
-
-async function get(){
-    return await httpService.get(korisnik)
-    .then((odgovor)=>{
-        //console.table(odgovor.data);
-        return odgovor.data;
-    })
-    .catch((e)=>{
-        //console.log(e);
-        return e;
-    })
-}
-async function post(korisnik){
-    return await httpService.post(korisnik,smjer)
-    .then((odgovor)=>{
-        //console.table(odgovor.data);
-        return {greska: false, poruka: odgovor.data};
-    })
-    .catch((e)=>{
-        //console.log(e);
-        return {greska: true, poruka: e};
-    })
-}
-async function _delete(sifraKorisnik){
-    return await httpService.delete(korisnik + '/'+sifraKorisnik)
-    .then((odgovor)=>{
-        //console.table(odgovor.data);
-        return {greska: false, poruka: odgovor.data.poruka};
-    })
-    .catch((e)=>{
-        //console.log(e);
-        return {greska: true, poruka: e};
-    })
-}
+// ovdje će doći ostale rute koje nisu odrađene u HttpService
 
 export default{
     get,
-    post,
-    _delete,
-    obrisi
-}
+    obrisi,
+    dodaj,
+    promjeni,
+    getBySifra,
+    dohvatiPorukeAlert
+};

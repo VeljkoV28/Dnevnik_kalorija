@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
-import Service from "../../services/KorisnikService";
+import Service from '../../services/KorisnikService';
 import { IoIosAdd } from "react-icons/io";
-import {  FaEdit, FaTrash} from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import {  RoutesNames } from "../../constants";
+import { RoutesNames } from "../../constants";
 import { useNavigate } from "react-router-dom";
 import useError from "../../hooks/useError";
-import moment from "moment/moment";
+
+
 
 export default function Korisnici(){
     const [korisnici,setKorisnici] = useState();
@@ -38,11 +39,15 @@ export default function Korisnici(){
 
     
     return(
-        <>
+        
            <Container>
-            <Link to={RoutesNames.KORISNIK_NOVI}> Dodaj </Link>
+            <Link to={RoutesNames.KORISNIK_NOVI} className="btn btn-success siroko">
+            <IoIosAdd
+                size={25}
+                /> Dodaj
+            </Link>
             <Table striped bordered hover responsive>
-                    <thead>
+                <thead>
                         <tr>
                             <th>Korisniciko ime</th>
                             <th>Visina</th>
@@ -60,18 +65,34 @@ export default function Korisnici(){
                                 <td>{korisnik.tezina}</td>
                                 <td>{korisnik.zeljena_tezina}</td>
                                 
-                                <td>
-                                    <Button> 
-                                    onClick={()=>obrisi(korisnik.sifra)}
-                                    variant='danger'
-                                    Obrisi</Button>
-                                </td>
                                 
-                            </tr>
-                        ))}
-                    </tbody>
+                                <td className="sredina">
+                                    <Button
+                                        variant='primary'
+                                        onClick={()=>{navigate(`/korisnici/${korisnik.sifra}`)}}
+                                    >
+                                        <FaEdit 
+                                    size={25}
+                                    />
+                                    </Button>
+                               
+                                
+                                    &nbsp;&nbsp;&nbsp;
+                                    <Button
+                                        variant='danger'
+                                        onClick={() => obrisiKorisnik(korisnik.sifra)}
+                                    >
+                                        <FaTrash
+                                        size={25}/>
+                                    </Button>
+
+                                   
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
             </Table>
-           </Container>
-        </>
+        </Container>
     );
-}
+
+}              
