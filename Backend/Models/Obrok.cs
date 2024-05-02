@@ -8,6 +8,7 @@ namespace Backend.Models
 
         public int? Uneseno_kalorija { get; set; }
 
-        public virtual required Korisnik Korisnik_ {  get; set; }
+        [ForeignKey("Korisnik")]
+        public required Korisnik Korisnik_ {  get; set; }
     }
 }

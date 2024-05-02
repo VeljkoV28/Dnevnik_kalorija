@@ -1,75 +1,60 @@
 ﻿using Backend.Data;
 using Backend.Models;
+using Backend.Mappers;
 using Microsoft.AspNetCore.Mvc;
+
+
+
 
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class KorisnikController:ControllerBase
+    public class KorisnikController : EdunovaController<Korisnik, KorisnikDTORead, KorisnikDTOInsertUpdate>
     {
-        // Dependency injection
-        // Definiraš privatno svojstvo
-        private readonly EdunovaContext _context;
-
-        // Dependency injection
-        // U konstruktoru primir instancu i dodjeliš privatnom svojstvu
-        public KorisnikController(EdunovaContext context)
+        
+        public KorisnikController(EdunovaContext context) : base(context)
         {
-            _context = context;
+            DbSet = _context.Korisnici;
+            _mapper = new MappingKorisnik();
         }
 
 
-        [HttpGet]
-        public IActionResult Get()
+        protected override List<KorisnikDTORead> UcitajSve()
         {
-            try
+
+            var lista = _context.Korisnici.ToList();
+
+            if (lista == null || lista.Count == 0)
             {
-                return new JsonResult(_context.Korisnici.ToList());
+                throw new Exception("Ne postoje podaci u bazi");
             }
-            catch (Exception ex)
-            {
-                return new JsonResult(ex.ToString());
-            }
-            
+            return _mapper.MapReadList(lista);
+
+
+
+
         }
 
-        [HttpPost]
-        public IActionResult Post(Korisnik Korisnik)
+        protected override Korisnik PromjeniEntitet(KorisnikDTOInsertUpdate dto, Korisnik s)
         {
-            _context.Korisnici.Add(Korisnik);
-            _context.SaveChanges();
-            return new JsonResult(Korisnik);
+            return base.PromjeniEntitet(dto, s);
         }
-
-        [HttpPut]
-        [Route("{sifra:int}")]
-        public IActionResult Put(int sifra, Korisnik Korisnik)
+        protected override Korisnik NadiEntitet(int Sifra)
         {
-            var smjerIzBaze = _context.Korisnici.Find(sifra);
-            // za sada ručno, kasnije će doći Mapper
-            smjerIzBaze.Korisnicko_ime = Korisnik.Korisnicko_ime;
-            smjerIzBaze.Visina= Korisnik.Visina;
-            smjerIzBaze.Trenutna_tezina = Korisnik.Trenutna_tezina;
-            smjerIzBaze.Zeljena_tezina = Korisnik.Zeljena_tezina;
-            
-
-            _context.Korisnici.Update(smjerIzBaze);
-            _context.SaveChanges();
-
-            return new JsonResult(smjerIzBaze);
+            return base.NadiEntitet(Sifra);
         }
 
-        [HttpDelete]
-        [Route("{sifra:int}")]
-        [Produces("application/json")]
-        public IActionResult Delete(int sifra)
+        protected override Korisnik KreirajEntitet(KorisnikDTOInsertUpdate dto)
         {
-            var smjerIzBaze = _context.Korisnici.Find(sifra);
-            _context.Korisnici.Remove(smjerIzBaze);
-            _context.SaveChanges();
-            return new JsonResult(new { poruka="Obrisano"});
+            return base.KreirajEntitet(dto);
         }
 
-    }
-}
+        protected override void KontrolaBrisanje(Korisnik entitet)
+        {
+            throw new NotImplementedException();
+        }
+    }    
+
+} 
+

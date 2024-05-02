@@ -12,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Svi se od svuda na sve moguæe naèine mogu spojitina naš API
+// Èitati https://code-maze.com/aspnetcore-webapi-best-practices/
 builder.Services.AddCors(opcije =>
 {
     opcije.AddPolicy("CorsPolicy",
@@ -20,7 +22,6 @@ builder.Services.AddCors(opcije =>
     );
 
 });
-
 
 
 // Dodavanje baze podataka
@@ -36,7 +37,10 @@ var app = builder.Build();
 //if (app.Environment.IsDevelopment())
 //{
 app.UseSwagger();
-app.UseSwaggerUI();
+app.UseSwaggerUI(o =>
+{
+    o.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+});
 //}
 
 app.UseHttpsRedirection();
@@ -44,10 +48,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
 app.UseCors("CorsPolicy");
 
+// za potrebe produkcije
 app.UseStaticFiles();
 app.UseDefaultFiles();
 app.MapFallbackToFile("index.html");
+// završio za potrebe produkcije
 
 app.Run();

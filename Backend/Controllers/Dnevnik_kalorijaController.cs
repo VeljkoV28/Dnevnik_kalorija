@@ -1,73 +1,59 @@
 ﻿using Backend.Data;
+using Backend.Mappers;
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class Dnevnik_kalorijaController:ControllerBase
+    public class Dnevnik_kalorijaController:EdunovaController< Dnevnik_kalorija, Dnevnik_kalorijaDTORead, Dnevnik_kalorijaDTOInsertUpdate>
     {
-        // Dependency injection
-        // Definiraš privatno svojstvo
-        private readonly EdunovaContext _context;
-
-        // Dependency injection
-        // U konstruktoru primir instancu i dodjeliš privatnom svojstvu
-        public Dnevnik_kalorijaController(EdunovaContext context)
+        public Dnevnik_kalorijaController(EdunovaContext context) : base(context)
         {
-            _context = context;
+            DbSet = _context.Dnevnici_kalorija;
+            _mapper = new MappingDnevnikKalorija();
         }
 
 
-        [HttpGet]
-        public IActionResult Get()
+        protected override List<Dnevnik_kalorijaDTORead> UcitajSve()
         {
-            try
+
+            var lista = _context.Dnevnici_kalorija.ToList();
+
+            if (lista == null || lista.Count == 0)
             {
-                return new JsonResult(_context.Dnevnici_kalorija.ToList());
+                throw new Exception("Ne postoje podaci u bazi");
             }
-            catch (Exception ex)
-            {
-                return new JsonResult(ex.ToString());
-            }
-            
+            return _mapper.MapReadList(lista);
+
+
+
+
         }
 
-        [HttpPost]
-        public IActionResult Post(Dnevnik_kalorija Dnevnik_kalorija)
+        protected override Dnevnik_kalorija PromjeniEntitet(Dnevnik_kalorijaDTOInsertUpdate dto, Dnevnik_kalorija s)
         {
-            _context.Dnevnici_kalorija.Add(Dnevnik_kalorija);
-            _context.SaveChanges();
-            return new JsonResult(Dnevnik_kalorija);
+            return base.PromjeniEntitet(dto, s);
         }
-
-        [HttpPut]
-        [Route("{sifra:int}")]
-        public IActionResult Put(int sifra, Dnevnik_kalorija Dnevnik_kalorija)
+        protected override Dnevnik_kalorija NadiEntitet(int Sifra)
         {
-            var smjerIzBaze = _context.Dnevnici_kalorija.Find(sifra);
-            // za sada ručno, kasnije će doći Mapper
-            smjerIzBaze.Vrsta_Aktivnosti = Dnevnik_kalorija.Vrsta_Aktivnosti;
-            smjerIzBaze.Potroseno_kalorija= Dnevnik_kalorija.Potroseno_kalorija;
-            
-
-            _context.Dnevnici_kalorija.Update(smjerIzBaze);
-            _context.SaveChanges();
-
-            return new JsonResult(smjerIzBaze);
+            return base.NadiEntitet(Sifra);
         }
 
-        [HttpDelete]
-        [Route("{sifra:int}")]
-        [Produces("application/json")]
-        public IActionResult Delete(int sifra)
+        protected override Dnevnik_kalorija KreirajEntitet(Dnevnik_kalorijaDTOInsertUpdate dto)
         {
-            var smjerIzBaze = _context.Dnevnici_kalorija.Find(sifra);
-            _context.Dnevnici_kalorija.Remove(smjerIzBaze);
-            _context.SaveChanges();
-            return new JsonResult(new { poruka="Obrisano"});
+            return base.KreirajEntitet(dto);
         }
 
+        protected override void KontrolaBrisanje(Dnevnik_kalorija entitet)
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }
+
+
+
