@@ -52,7 +52,7 @@ namespace Backend.Controllers
 
         protected override void KontrolaBrisanje(Korisnik entitet)
         {
-            throw new NotImplementedException();
+           
         }
     }    
 

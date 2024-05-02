@@ -80,7 +80,7 @@ export default function Korisnici(){
                                     &nbsp;&nbsp;&nbsp;
                                     <Button
                                         variant='danger'
-                                        onClick={() => obrisiKorisnik(korisnik.sifra)}
+                                        onClick={() => obrisi(korisnik.sifra)}
                                     >
                                         <FaTrash
                                         size={25}/>

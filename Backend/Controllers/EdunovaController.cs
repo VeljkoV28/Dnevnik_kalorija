@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Backend.Controllers
 {
    
-    public abstract class EdunovaController<T, TDR, TDI>(EdunovaContext context) : ControllerBase where T : Entitet
+    public abstract class EdunovaController<T, TDR, TDI>(EdunovaContext context): ControllerBase where T : Entitet
     {
         
         protected DbSet<T>? DbSet = null;

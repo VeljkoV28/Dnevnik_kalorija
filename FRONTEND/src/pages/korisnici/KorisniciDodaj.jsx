@@ -34,7 +34,7 @@ export default function KorisniciDodaj() {
       dodajKorisnik({
         korisnicko_ime: podaci.get('korisnicko ime'),
         visina: podaci.get('visina'),
-        tezina: podaci.get('tezina'),
+        trenutna_tezina: podaci.get('tezina'),
         zeljena_tezina: podaci.get('zeljena tezina')
       });
     }
@@ -46,7 +46,7 @@ export default function KorisniciDodaj() {
     return (
         <Container>
           <Form onSubmit={handleSubmit}>
-            <InputText atribut='korisnicko ime' vrijednost='' />
+          <InputText atribut='korisnicko ime' vrijednost=''/>
             <InputText atribut='visina' vrijednost='' />
             <InputText atribut='tezina' vrijednost='' />
             <InputText atribut='zeljena tezina' vrijednost='' />
