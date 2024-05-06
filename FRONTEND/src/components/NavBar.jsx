@@ -30,11 +30,14 @@ export default function NavBar(){
                     <NavDropdown.Item 
                     onClick={()=>navigate(RoutesNames.KORISNIK_PREGLED)}
                     >Korisnik</NavDropdown.Item>
-                    <NavDropdown.Item href="#action/3.2">
-                       Dnevnik kalorija
-                    </NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.3">Obrok</NavDropdown.Item>
+                    <NavDropdown.Item 
+                    onClick={()=>navigate(RoutesNames.DNEVNIK_KALORIJA_PREGLED)}
+                    >Dnevnik kalorija </NavDropdown.Item>
+                    
+
+                    <NavDropdown.Item
+                    onClick={()=>navigate(RoutesNames.OBROK_PREGLED)}
+                    >Obrok</NavDropdown.Item>
                 
                     
                     
