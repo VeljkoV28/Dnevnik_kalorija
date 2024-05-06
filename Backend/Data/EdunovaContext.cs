@@ -24,11 +24,11 @@ namespace Backend.Data
     //protected override void OnModelCreating(ModelBuilder modelBuilder)
     //{
 
-    //    // implementacija veze 1:n
-    //    modelBuilder.Entity<Korisnik>().HasOne(g => g.Korisnik_);
-    //    modelBuilder.Entity<Korisnik>().HasOne(g => g.Korinsik_);
-
        
+    //    modelBuilder.Entity<Obrok>().HasOne(m => m.Korisnik_);
+    //    modelBuilder.Entity<Dnevnik_kalorija>().HasOne(n => n.Korisnik_);
+
+
 
     //}
 }

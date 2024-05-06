@@ -35,7 +35,7 @@ namespace Backend.Models
         string? Vrsta_Aktivnosti,
         [Required(ErrorMessage = "Obavezna koliko je kalorija potroseno")]
         int? Potroseno_kaorija,
-        int? KorisnikSifra);
+        int? Korisnik_);
 
 
     public record ObrokDTORead(int Sifra, int? Porcija, int? Uneseno_kalorija);
@@ -44,8 +44,8 @@ namespace Backend.Models
         [Required(ErrorMessage = "Obavezna kolicina porcija")]
         int? Porcija,
         [Required(ErrorMessage = "Obavezna koliko je kalorija uneseno")]
-        int? Uneseno_kaorija,
-        int? KorisnikSifra);
+        int? Uneseno_kalorija,
+        int? KorisnikID);
 
 
 

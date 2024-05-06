@@ -7,7 +7,7 @@ namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class ObrokController: EdunovaController<Obrok, ObrokDTORead, ObrokDTOInsertUpdate>
+    public class ObrokController : EdunovaController<Obrok, ObrokDTORead, ObrokDTOInsertUpdate>
     {
         public ObrokController(EdunovaContext context) : base(context)
         {

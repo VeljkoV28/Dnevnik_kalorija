@@ -19,7 +19,7 @@ namespace Backend.Mappers
             }));
 
             MapperMapInsertUpdatedFromDTO = new Mapper(new MapperConfiguration(c =>{
-                    c.CreateMap<KorisnikDTOInsertUpdate, Korisnik>();
+                    c.CreateMap<ObrokDTOInsertUpdate, Obrok>();
                 }));
 
             MapperMapInsertUpdateToDTO = new Mapper(new MapperConfiguration(c =>{
@@ -27,7 +27,8 @@ namespace Backend.Mappers
                  .ConstructUsing(entitet =>
                   new ObrokDTOInsertUpdate(
                     entitet.Porcija,
-                    entitet.Uneseno_kalorija));
+                    entitet.Uneseno_kalorija,
+                    entitet.Korisnik_ == null ? null : entitet.Korisnik_.Sifra));
 
             }));
         }
