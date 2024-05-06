@@ -45,7 +45,7 @@ export default function KorisnikPromjeni() {
     promjeniKorisnik({
         korisnicko_ime: podaci.get('korisnicko ime'),
         visina: podaci.get('visina'),
-        trenutna_tezina: podaci.get('tezina'),
+        trenutna_tezina: podaci.get('trenutna tezina'),
         zeljena_tezina: podaci.get('zeljena tezina')
       });
     }
@@ -53,13 +53,13 @@ export default function KorisnikPromjeni() {
     return (
         <Container>
           <Form onSubmit={handleSubmit}>
-          <InputText atribut='korisnicko ime' vrijednost='' />
+            <InputText atribut='korisnicko ime' vrijednost='' />
             <InputText atribut='visina' vrijednost='' />
-            <InputText atribut='tezina' vrijednost='' />
+            <InputText atribut='trenutna tezina' vrijednost='' />
             <InputText atribut='zeljena tezina' vrijednost='' />
             
             <Akcije odustani={RoutesNames.KORISNIK_PREGLED} akcija='Dodaj korisnika' />       
-          </Form>
+          </Form> 
         </Container>
       );
 }

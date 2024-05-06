@@ -1,4 +1,4 @@
-import {get,dodaj,getBySifra,promjeni,dohvatiPorukeAlert, obrisi} from './HttpService';
+import { get, obrisi, dodaj, promjeni, getBySifra, dohvatiPorukeAlert } from "./HttpService";
 
 // ovdje će doći ostale rute koje nisu odrađene u HttpService
 
@@ -9,4 +9,5 @@ export default{
     promjeni,
     getBySifra,
     dohvatiPorukeAlert
+    
 };

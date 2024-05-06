@@ -1,6 +1,7 @@
 ﻿
 
 using Backend.Models;
+using EdunovaAPP.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
@@ -19,7 +20,9 @@ namespace Backend.Data
         public DbSet<Korisnik> Korisnici { get; set; }
 
         public DbSet<Obrok> Obroci {  get; set; }
-        
+
+        public DbSet<Operater> Operateri { get; set; }
+
     }
     //protected override void OnModelCreating(ModelBuilder modelBuilder)
     //{

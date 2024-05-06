@@ -1,5 +1,9 @@
 using Backend.Data;
 using Microsoft.EntityFrameworkCore;
+using EdunovaAPP.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 
 
@@ -10,24 +14,39 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-// Svi se od svuda na sve moguæe naèine mogu spojitina naš API
-// Èitati https://code-maze.com/aspnetcore-webapi-best-practices/
-builder.Services.AddCors(opcije =>
-{
-    opcije.AddPolicy("CorsPolicy",
-        builder =>
-            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
-    );
-
-});
+builder.Services.AddEdunovaSwaggerGen();
+builder.Services.AddEdunovaCORS();
 
 
 // Dodavanje baze podataka
 builder.Services.AddDbContext<EdunovaContext>(o => {
     o.UseSqlServer(builder.Configuration.GetConnectionString("EdunovaContext"));
 });
+
+// SECURITY
+
+// https://www.youtube.com/watch?v=mgeuh8k3I4g&ab_channel=NickChapsas
+builder.Services.AddAuthentication(x => {
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("MojKljucKojijeJakoTajan i dovoljno dugaèak da se može koristiti")),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = false
+    };
+});
+
+builder.Services.AddAuthorization();
+
+
+// END SECURITY
+
 
 
 
@@ -40,12 +59,16 @@ app.UseSwagger();
 app.UseSwaggerUI(o =>
 {
     o.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+    o.EnableTryItOutByDefault();
 });
 //}
 
 app.UseHttpsRedirection();
 
+// SECURITY
+app.UseAuthentication();
 app.UseAuthorization();
+// ENDSECURITY
 
 app.MapControllers();
 

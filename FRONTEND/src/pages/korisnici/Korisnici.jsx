@@ -51,7 +51,7 @@ export default function Korisnici(){
                         <tr>
                             <th>Korisniciko ime</th>
                             <th>Visina</th>
-                            <th>Tezina</th>
+                            <th>Trenutna tezina</th>
                             <th>Zeljena tezina</th>
                             
                             
@@ -62,7 +62,7 @@ export default function Korisnici(){
                             <tr key={index}>
                                 <td>{korisnik.korisnicko_ime}</td>
                                 <td>{korisnik.visina}</td>
-                                <td>{korisnik.tezina}</td>
+                                <td>{korisnik.trenutna_tezina}</td>
                                 <td>{korisnik.zeljena_tezina}</td>
                                 
                                 

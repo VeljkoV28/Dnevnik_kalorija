@@ -47,16 +47,25 @@ namespace Backend.Models
         int? Uneseno_kalorija,
         int? KorisnikID);
 
+    public record SlikaDTO([Required(ErrorMessage = "Base64 zapis slike obavezno")] string Base64);
 
-
-
-
-
-
-
-
-
-
-
+    public record OperaterDTO(
+       [Required(ErrorMessage = "Email obavezno")]
+        string? email,
+       [Required(ErrorMessage = "Lozinka obavezno")]
+        string? password);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

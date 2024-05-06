@@ -16,7 +16,7 @@ export default function ObrociDodaj() {
     const { prikaziError } = useError();
   
   
-    async function dodajObrok(Obrok) {
+    async function dodajObroke(Obrok) {
       const odgovor = await Service.dodaj('Obrok',Obrok);
       if(odgovor.ok){
         navigate(RoutesNames.OBROK_PREGLED);
@@ -31,16 +31,12 @@ export default function ObrociDodaj() {
       const podaci = new FormData(e.target);
   
   
-      dodajObrok({
+      dodajObroke({
         porcija: podaci.get('porcija'),
         Uneseno_kalorija: podaci.get('uneseno kalorija'),
         
       });
     }
-
-
-    
-    
 
     return (
         <Container>

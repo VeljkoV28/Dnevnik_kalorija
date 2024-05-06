@@ -7,7 +7,7 @@ import InputText from "../../components/InputText";
 import Akcije from "../../components/Akcije";
 import useError from "../../hooks/useError";
 
-export default function ObrokPromjeni() {
+export default function ObrociPromjeni() {
   const [obrok, setObrok] = useState({});
 
   const routeParams = useParams();
@@ -15,7 +15,7 @@ export default function ObrokPromjeni() {
   const { prikaziError } = useError();
 
 
-  async function dohvatiObrok() {
+  async function dohvatiObroke() {
     const odgovor = await Service.getBySifra('Obrok',routeParams.sifra);
     if(!odgovor.ok){
       prikaziError(odgovor.podaci);
@@ -24,7 +24,7 @@ export default function ObrokPromjeni() {
     setObrok(odgovor.podaci);
   }
 
-  async function promjeniObrok(obrok) {
+  async function promjeniObroke(obrok) {
     const odgovor = await Service.promjeni('Obrok',routeParams.sifra, obrok);
     if(odgovor.ok){
       navigate(RoutesNames.OBROK_PREGLED);
@@ -34,7 +34,7 @@ export default function ObrokPromjeni() {
   }
 
   useEffect(() => {
-    dohvatiObrok();
+    dohvatiObroke();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -42,7 +42,7 @@ export default function ObrokPromjeni() {
   function handleSubmit(e) {
     e.preventDefault();
     const podaci = new FormData(e.target);
-    promjeniObrok({
+    promjeniObroke({
         porcija: podaci.get('porcija'),
         Uneseno_kalorija: podaci.get('uneseno kalorija'),
         
