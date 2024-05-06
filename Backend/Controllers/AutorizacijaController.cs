@@ -1,11 +1,12 @@
-﻿using EdunovaAPP.Data;
-using EdunovaAPP.Models;
+﻿using Backend.Data;
+using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Org.BouncyCastle.Crypto.Generators;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
-namespace EdunovaAPP.Controllers
+namespace Backend.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
@@ -45,7 +46,7 @@ namespace EdunovaAPP.Controllers
 
 
 
-            if (!BCrypt.Net.BCrypt.Verify(operater.password, operBaza.Lozinka))
+            if (!BCrypt.Net.Bcrypt.Verify(operater.password, operBaza.Lozinka))
             {
                 return StatusCode(StatusCodes.Status403Forbidden, "Niste autorizirani, lozinka ne odgovara");
             }
