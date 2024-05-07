@@ -12,6 +12,6 @@ export const RoutesNames = {
     LOGIN: '/login',
 };
 export const App = {
-    URL: 'http://veljko28-001-site1.ktempurl.com',
+    URL: 'https://veljko28-001-site1.ktempurl.com',
     DEV: false
 };

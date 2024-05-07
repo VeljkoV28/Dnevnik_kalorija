@@ -49,7 +49,7 @@ namespace Backend.Controllers
 
         protected override void KontrolaBrisanje(Dnevnik_kalorija entitet)
         {
-            throw new NotImplementedException();
+            
         }
     }
 
