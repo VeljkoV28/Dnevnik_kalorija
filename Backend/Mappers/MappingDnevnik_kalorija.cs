@@ -13,7 +13,7 @@ namespace Backend.Mappers
                 .ConstructUsing(entitet =>
                  new Dnevnik_kalorijaDTORead(
                     entitet.Sifra,
-                    entitet.Vrsta_Aktivnosti,
+                    entitet.Vrsta_aktivnosti,
                     entitet.Potroseno_kalorija,
                     entitet.Uneseno_kalorija));
             }));
@@ -26,7 +26,7 @@ namespace Backend.Mappers
                 c.CreateMap<Dnevnik_kalorija, Dnevnik_kalorijaDTOInsertUpdate>()
                 .ConstructUsing(entitet =>
                  new Dnevnik_kalorijaDTOInsertUpdate(
-                   entitet.Vrsta_Aktivnosti,
+                   entitet.Vrsta_aktivnosti,
                    entitet.Potroseno_kalorija,
                    entitet.Uneseno_kalorija,
                    entitet.Korisnik_ == null ? null : entitet.Korisnik_.Sifra));
