@@ -3,11 +3,11 @@ import { get, obrisi, dodaj, promjeni, getBySifra, dohvatiPorukeAlert } from "./
 // ovdje će doći ostale rute koje nisu odrađene u HttpService
 
 export default{
-    get,
-    obrisi,
-    dodaj,
-    promjeni,
-    getBySifra,
-    dohvatiPorukeAlert
+   get,
+   obrisi,
+   dodaj,
+   promjeni,
+   getBySifra,
+   dohvatiPorukeAlert
     
 };

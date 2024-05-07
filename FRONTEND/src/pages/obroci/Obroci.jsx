@@ -11,7 +11,7 @@ import useError from "../../hooks/useError";
 
 
 export default function Obroci(){
-    const [korisnici,setObroci] = useState();
+    const [obroci,setObroci] = useState();
     let navigate = useNavigate(); 
     const { prikaziError } = useError();
 
@@ -21,7 +21,7 @@ export default function Obroci(){
             prikaziError(odgovor.podaci);
             return;
         }
-        setKorisnici(odgovor.podaci);
+        setObroci(odgovor.podaci);
     }
 
     async function obrisi(sifra) {

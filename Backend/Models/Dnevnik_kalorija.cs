@@ -9,6 +9,6 @@ namespace Backend.Models
         public int? Potroseno_kalorija { get; set; }
         
         [ForeignKey("Korisnik")]
-        public required Korisnik? Korisnik_ { get; set; }
+        public required Korisnik? Korisnik { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace Backend.Mappers
                  new Dnevnik_kalorijaDTOInsertUpdate(
                    entitet.Vrsta_Aktivnosti,
                    entitet.Potroseno_kalorija,
-                   entitet.Korisnik_ == null ? null : entitet.Korisnik_.Sifra));
+                   entitet.Korisnik == null ? null : entitet.Korisnik.Sifra));
 
             }));
         }

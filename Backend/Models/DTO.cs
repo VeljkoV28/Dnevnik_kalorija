@@ -49,11 +49,11 @@ namespace Backend.Models
 
     //public record SlikaDTO([Required(ErrorMessage = "Base64 zapis slike obavezno")] string Base64);
 
-    public record OperaterDTO(
-       [Required(ErrorMessage = "Email obavezno")]
-        string? Email,
-       [Required(ErrorMessage = "Lozinka obavezno")]
-        string? Password);
+    //public record operaterdto(
+    //   [required(errormessage = "email obavezno")]
+    //    string? email,
+    //   [required(errormessage = "lozinka obavezno")]
+    //    string? password);
 
 
 

@@ -19,10 +19,10 @@ export default function Login() {
   return (
     <Container className='mt-4'>
         <p>
-            email: edunova@edunova.hr
+            email: veljko2805vujic@gmail.com
         </p>
         <p>
-            lozinka: edunova
+            lozinka: f57FpjTG
         </p>
       <Form onSubmit={handleSubmit}>
         <Form.Group className='mb-3' controlId='email'>

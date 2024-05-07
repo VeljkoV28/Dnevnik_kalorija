@@ -7,7 +7,7 @@ import InputText from "../../components/InputText";
 import Akcije from "../../components/Akcije";
 import useError from "../../hooks/useError";
 
-export default function ObrokPromjeni() {
+export default function ObrociPromjeni() {
   const [obrok, setObrok] = useState({});
 
   const routeParams = useParams();

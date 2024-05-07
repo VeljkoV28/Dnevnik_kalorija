@@ -20,7 +20,7 @@ namespace Backend.Data
 
         public DbSet<Obrok> Obroci {  get; set; }
 
-        public DbSet<Operater> Operateri { get; set; }
+        //public DbSet<Operater> Operateri { get; set; }
         
     }
     //protected override void OnModelCreating(ModelBuilder modelBuilder)
