@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EdunovaAPP.Models
+namespace Backend.Models
 {
     public class Operater : Entitet
     {

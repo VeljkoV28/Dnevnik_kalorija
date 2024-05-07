@@ -1,8 +1,8 @@
-﻿using EdunovaAPP.Models;
+﻿using Backend.Models;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
-namespace EdunovaAPP.Extensions
+namespace Backend.Extensions
 {
     public static class EdunovaExtensions
     {
@@ -20,8 +20,8 @@ namespace EdunovaAPP.Extensions
                     Version = "v1",
                     Contact = new Microsoft.OpenApi.Models.OpenApiContact()
                     {
-                        Email = "tjakopec@gmail.com",
-                        Name = "Tomislav Jakopec"
+                        Email = "veljko2805vujic@gmail.com",
+                        Name = "Veljko Vujic"
                     },
                     Description = "Ovo je dokumentacija za Edunova API",
                     License = new Microsoft.OpenApi.Models.OpenApiLicense()

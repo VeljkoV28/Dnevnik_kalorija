@@ -2,7 +2,6 @@
 using Backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Org.BouncyCastle.Crypto.Generators;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 
@@ -34,7 +33,7 @@ namespace Backend.Controllers
 
 
             var operBaza = _context.Operateri
-                   .Where(p => p.Email!.Equals(operater.email))
+                   .Where(p => p.Email!.Equals(operater.Email))
                    .FirstOrDefault();
 
             if (operBaza == null)
@@ -46,7 +45,7 @@ namespace Backend.Controllers
 
 
 
-            if (!BCrypt.Net.Bcrypt.Verify(operater.password, operBaza.Lozinka))
+            if (!BCrypt.Net.BCrypt.Verify(operater.Password, operBaza.Lozinka))
             {
                 return StatusCode(StatusCodes.Status403Forbidden, "Niste autorizirani, lozinka ne odgovara");
             }
