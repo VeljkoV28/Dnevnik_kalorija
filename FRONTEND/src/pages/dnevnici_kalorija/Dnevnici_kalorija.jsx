@@ -11,18 +11,30 @@ import useError from "../../hooks/useError";
 
 
 export default function Dnevnici_kalorija(){
-    const [dnevici_kalorija,setDnevnici_kalorija] = useState();
-    let navigate = useNavigate(); 
+    
+    const navigate = useNavigate(); 
+    const [korisnici, setKorisnici] = useState;
+    const [korisnikSifra, setKorisnikSifra] = useState(0);
     const { prikaziError } = useError();
 
-    async function dohvatiDnevnike_kalorija(){
-        const odgovor = await Service.get('Dnevnik_kalorija');
+    async function dohvatiKorisnike(){
+        const odgovor = await Service.get('Korisnik');
         if(!odgovor.ok){
             prikaziError(odgovor.podaci);
             return;
         }
-        setDnevnici_kalorija(odgovor.podaci);
+        setKorisnici(odgovor.podaci);
+        setKorisnikSifra(odgovor.podaci[0].sifra)
     }
+    async function ucitaj(){
+        showLoading();
+        await dohvatiKorisnike();
+        hideLoading();
+
+    }
+    useEffect(()=>{ucitaj();
+
+    },[]);
 
     async function obrisi(sifra) {
         const odgovor = await Service.obrisi('Dnevnik_kalorija',sifra);
@@ -36,6 +48,7 @@ export default function Dnevnici_kalorija(){
         dohvatiDnevnike_kalorija();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
+    
 
     
     return(
@@ -51,7 +64,7 @@ export default function Dnevnici_kalorija(){
                         <tr>
                             <th>Vrsta aktivnosti</th>
                             <th>Potroseno kalorija</th>
-                            
+                            <th>Uneseno kalorija</th>
                             
                             
                             
@@ -62,6 +75,7 @@ export default function Dnevnici_kalorija(){
                             <tr key={index}>
                                 <td>{dnevik_kalorija.Vrsta_aktivnosti}</td>
                                 <td>{dnevik_kalorija.Potroseno_kalorija}</td>
+                                <td>{dnevik_kalorija.Uneseno_kalorija}</td>
                                 
                                 
                                 

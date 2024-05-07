@@ -7,6 +7,8 @@ namespace Backend.Models
         public string? Vrsta_Aktivnosti { get; set; }
 
         public int? Potroseno_kalorija { get; set; }
+
+        public int? Uneseno_kalorija { get; set; }
         
         [ForeignKey("Korisnik")]
         public required Korisnik? Korisnik_ { get; set; }

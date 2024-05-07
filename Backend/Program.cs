@@ -1,8 +1,15 @@
 using Backend.Data;
+<<<<<<< Updated upstream
 using Microsoft.EntityFrameworkCore;
 using EdunovaAPP.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+=======
+
+
+using Microsoft.EntityFrameworkCore;
+
+>>>>>>> Stashed changes
 using System.Text;
 
 
@@ -14,8 +21,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+<<<<<<< Updated upstream
 builder.Services.AddEdunovaSwaggerGen();
 builder.Services.AddEdunovaCORS();
+=======
+builder.Services.AddSwaggerGen();
+>>>>>>> Stashed changes
 
 
 // Dodavanje baze podataka
@@ -23,6 +34,7 @@ builder.Services.AddDbContext<EdunovaContext>(o => {
     o.UseSqlServer(builder.Configuration.GetConnectionString("EdunovaContext"));
 });
 
+<<<<<<< Updated upstream
 // SECURITY
 
 // https://www.youtube.com/watch?v=mgeuh8k3I4g&ab_channel=NickChapsas
@@ -47,6 +59,9 @@ builder.Services.AddAuthorization();
 
 // END SECURITY
 
+=======
+//
+>>>>>>> Stashed changes
 
 
 
@@ -55,6 +70,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
 //{
+<<<<<<< Updated upstream
 app.UseSwagger();
 app.UseSwaggerUI(o =>
 {
@@ -62,6 +78,15 @@ app.UseSwaggerUI(o =>
     o.EnableTryItOutByDefault();
 });
 //}
+=======
+    app.UseSwagger();
+    app.UseSwaggerUI(o =>
+    {
+        o.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+        o.EnableTryItOutByDefault();
+    });
+    //}
+>>>>>>> Stashed changes
 
 app.UseHttpsRedirection();
 
@@ -80,4 +105,15 @@ app.UseDefaultFiles();
 app.MapFallbackToFile("index.html");
 // završio za potrebe produkcije
 
+<<<<<<< Updated upstream
 app.Run();
+=======
+    // za potrebe produkcije
+    app.UseStaticFiles();
+    app.UseDefaultFiles();
+    app.MapFallbackToFile("index.html");
+    // završio za potrebe produkcije
+
+    app.Run();
+
+>>>>>>> Stashed changes
