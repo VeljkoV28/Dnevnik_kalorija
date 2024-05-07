@@ -8,7 +8,7 @@ import Akcije from "../../components/Akcije";
 import useError from "../../hooks/useError";
 
 export default function ObrociPromjeni() {
-  const [obrok, setObrok] = useState({});
+  const [obroci, setObroci] = useState({});
 
   const routeParams = useParams();
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function ObrociPromjeni() {
       prikaziError(odgovor.podaci);
       return;
     }
-    setObrok(odgovor.podaci);
+    setObroci(odgovor.podaci);
   }
 
   async function promjeniObrok(obrok) {

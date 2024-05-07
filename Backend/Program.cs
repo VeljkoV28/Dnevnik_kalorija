@@ -36,31 +36,32 @@ builder.Services.AddDbContext<EdunovaContext>(o => {
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
-app.UseSwagger();
-app.UseSwaggerUI(o =>
+if (app.Environment.IsDevelopment())
 {
-    o.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
-    o.EnableTryItOutByDefault();
-});
-//}
+    app.UseSwagger();
+    app.UseSwaggerUI(o =>
+    {
+        o.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+        o.EnableTryItOutByDefault();
+    });
+    //}
 
-app.UseHttpsRedirection();
+    app.UseHttpsRedirection();
 
-// SECURITY
+    // SECURITY
 
-app.UseAuthorization();
-// ENDSECURITY
+    app.UseAuthorization();
+    // ENDSECURITY
 
-app.MapControllers();
+    app.MapControllers();
 
-app.UseCors("CorsPolicy");
+    app.UseCors("CorsPolicy");
 
-// za potrebe produkcije
-app.UseStaticFiles();
-app.UseDefaultFiles();
-app.MapFallbackToFile("index.html");
-// završio za potrebe produkcije
+    // za potrebe produkcije
+    app.UseStaticFiles();
+    app.UseDefaultFiles();
+    app.MapFallbackToFile("index.html");
+    // završio za potrebe produkcije
 
-app.Run();
+    app.Run();
+}

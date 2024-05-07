@@ -11,7 +11,7 @@ import KorisnikPromjeni from './pages/korisnici/KorisniciPromjena'
 
 import Obroci from "./pages/obroci/Obroci"
 import ObrociDodaj from "./pages/obroci/ObrociDodaj"
-import ObrokPromjeni from "./pages/obroci/ObrociPromjena"
+import ObrociPromjeni from "./pages/obroci/ObrociPromjena"
 
 import Dnevnici_kalorija from "./pages/dnevnici_kalorija/Dnevnici_kalorija"
 import Dnevnici_kalorijaDodaj from "./pages/dnevnici_kalorija/Dnevnici_kalorijaDodaj"
@@ -38,11 +38,11 @@ import useError from './hooks/useError'
           <Route path={RoutesNames.KORISNIK_PROMJENI} element={<KorisnikPromjeni />} />
   
           <Route path={RoutesNames.OBROK_PREGLED} element={<Obroci />} />
-          <Route path={RoutesNames.OBROK_NOVI} element={<ObrokDodaj />} />
-          <Route path={RoutesNames.OBROK_PROMJENI} element={<ObrokPromjeni />} />
+          <Route path={RoutesNames.OBROK_NOVI} element={<ObrociDodaj />} />
+          <Route path={RoutesNames.OBROK_PROMJENI} element={<ObrociPromjeni />} />
 
           <Route path={RoutesNames.DNEVNIK_KALORIJA_PREGLED} element={<Dnevnici_kalorija />} />
-          <Route path={RoutesNames.DNEVNIK_KALORIJA_NOVI} element={<Dnevnik_kalorijaDodaj />} />
+          <Route path={RoutesNames.DNEVNIK_KALORIJA_NOVI} element={<Dnevnici_kalorijaDodaj />} />
           <Route path={RoutesNames.DNEVNIK_KALORIJA_PROMJENI} element={<Dnevnik_kalorijaPromjeni />} />
         </Routes>
       </>
