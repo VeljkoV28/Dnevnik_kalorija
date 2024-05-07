@@ -28,24 +28,19 @@ namespace Backend.Models
         [Required(ErrorMessage = "Zeljena tezina obavezna")]
         int? Zeljena_tezina);
 
-    public record Dnevnik_kalorijaDTORead(int Sifra, string? Vrsta_Aktivnosti, int? Potroseno_kalorija);
+    public record Dnevnik_kalorijaDTORead(int Sifra, string? Vrsta_Aktivnosti, int? Potroseno_kalorija, int? Uneseno_kalorija);
 
     public record Dnevnik_kalorijaDTOInsertUpdate(
         [Required(ErrorMessage = "Obavezna vrsta aktivnosti")]
         string? Vrsta_Aktivnosti,
         [Required(ErrorMessage = "Obavezna koliko je kalorija potroseno")]
         int? Potroseno_kaorija,
+        [Required(ErrorMessage = "Obavezna koliko je kalorija uneseno")]
+        int? Uneseno_kaorija,
         int? Korisnik_);
 
 
-    public record ObrokDTORead(int Sifra, int? Porcija, int? Uneseno_kalorija);
-
-    public record ObrokDTOInsertUpdate(
-        [Required(ErrorMessage = "Obavezna kolicina porcija")]
-        int? Porcija,
-        [Required(ErrorMessage = "Obavezna koliko je kalorija uneseno")]
-        int? Uneseno_kalorija,
-        int? KorisnikID);
+   
 
     //public record SlikaDTO([Required(ErrorMessage = "Base64 zapis slike obavezno")] string Base64);
 

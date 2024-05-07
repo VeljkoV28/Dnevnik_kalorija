@@ -51,6 +51,7 @@ export default function Dnevnici_kalorija(){
                         <tr>
                             <th>Vrsta aktivnosti</th>
                             <th>Potroseno kalorija</th>
+                            <th>Uneseno kalorija</th>
                             
                             
                             
@@ -62,6 +63,7 @@ export default function Dnevnici_kalorija(){
                             <tr key={index}>
                                 <td>{dnevik_kalorija.Vrsta_aktivnosti}</td>
                                 <td>{dnevik_kalorija.Potroseno_kalorija}</td>
+                                <td>{dnevik_kalorija.Uneseno_kalorija}</td>
                                 
                                 
                                 

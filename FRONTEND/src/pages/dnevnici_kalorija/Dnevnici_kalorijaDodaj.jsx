@@ -32,6 +32,7 @@ export default function Dnevnici_kalorijaDodaj() {
       dodajDnevnik_kalorija({
         Vrsta_aktivnosti: podaci.get('vrsta aktivnosti'),
         Potroseno_kalorija: podaci.get('potroseno kalorija'),
+        Uneseno_kalorija: podaci.get('uneseno kalorija')
         
       });
     }
@@ -45,6 +46,8 @@ export default function Dnevnici_kalorijaDodaj() {
           <Form onSubmit={handleSubmit}>
             <InputText atribut='vrsta aktivnosti' vrijednost='' />
             <InputText atribut='potroseno kalorija' vrijednost='' />
+            <InputText atribut='uneseno kalorija' vrijednost='' />
+            
             
             
             <Akcije odustani={RoutesNames.DNEVNIK_KALORIJA_PREGLED} akcija='Dodaj dnevnik kalorija' />       

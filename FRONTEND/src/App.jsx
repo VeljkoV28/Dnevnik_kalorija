@@ -9,10 +9,6 @@ import Korisnici from './pages/korisnici/Korisnici'
 import KorisnikDodaj from './pages/korisnici/KorisniciDodaj'
 import KorisnikPromjeni from './pages/korisnici/KorisniciPromjena'
 
-import Obroci from "./pages/obroci/Obroci"
-import ObrociDodaj from "./pages/obroci/ObrociDodaj"
-import ObrociPromjeni from "./pages/obroci/ObrociPromjena"
-
 import Dnevnici_kalorija from "./pages/dnevnici_kalorija/Dnevnici_kalorija"
 import Dnevnici_kalorijaDodaj from "./pages/dnevnici_kalorija/Dnevnici_kalorijaDodaj"
 import Dnevnik_kalorijaPromjeni from "./pages/dnevnici_kalorija/Dnevnici_kalorijaPromjena"
@@ -36,10 +32,6 @@ import useError from './hooks/useError'
           <Route path={RoutesNames.KORISNIK_PREGLED} element={<Korisnici />} />
           <Route path={RoutesNames.KORISNIK_NOVI} element={<KorisnikDodaj />} />
           <Route path={RoutesNames.KORISNIK_PROMJENI} element={<KorisnikPromjeni />} />
-  
-          <Route path={RoutesNames.OBROK_PREGLED} element={<Obroci />} />
-          <Route path={RoutesNames.OBROK_NOVI} element={<ObrociDodaj />} />
-          <Route path={RoutesNames.OBROK_PROMJENI} element={<ObrociPromjeni />} />
 
           <Route path={RoutesNames.DNEVNIK_KALORIJA_PREGLED} element={<Dnevnici_kalorija />} />
           <Route path={RoutesNames.DNEVNIK_KALORIJA_NOVI} element={<Dnevnici_kalorijaDodaj />} />

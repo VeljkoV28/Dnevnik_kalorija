@@ -14,7 +14,8 @@ namespace Backend.Mappers
                  new Dnevnik_kalorijaDTORead(
                     entitet.Sifra,
                     entitet.Vrsta_Aktivnosti,
-                    entitet.Potroseno_kalorija));
+                    entitet.Potroseno_kalorija,
+                    entitet.Uneseno_kalorija));
             }));
 
             MapperMapInsertUpdatedFromDTO = new Mapper(new MapperConfiguration(c =>{
@@ -27,7 +28,8 @@ namespace Backend.Mappers
                  new Dnevnik_kalorijaDTOInsertUpdate(
                    entitet.Vrsta_Aktivnosti,
                    entitet.Potroseno_kalorija,
-                   entitet.Korisnik == null ? null : entitet.Korisnik.Sifra));
+                   entitet.Uneseno_kalorija,
+                   entitet.Korisnik_ == null ? null : entitet.Korisnik_.Sifra));
 
             }));
         }

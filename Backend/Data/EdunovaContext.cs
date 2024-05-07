@@ -18,8 +18,6 @@ namespace Backend.Data
 
         public DbSet<Korisnik> Korisnici { get; set; }
 
-        public DbSet<Obrok> Obroci {  get; set; }
-
         //public DbSet<Operater> Operateri { get; set; }
         
     }

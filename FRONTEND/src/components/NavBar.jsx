@@ -35,10 +35,8 @@ export default function NavBar(){
                     >Dnevnik kalorija </NavDropdown.Item>
                     
 
-                    <NavDropdown.Item
-                    onClick={()=>navigate(RoutesNames.OBROK_PREGLED)}
-                    >Obrok</NavDropdown.Item>
-                
+                    
+                    
                     
                     
                     </NavDropdown>
